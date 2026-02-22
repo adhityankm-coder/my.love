@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy 18th Birthday, Shuttumani ❤️</title>
+
+  <!-- Google Fonts: Dancing Script (cursive) + Playfair Display (elegant serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== CSS RESET & BASE ===== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Playfair Display', Georgia, serif;
+      background: linear-gradient(135deg, #fff0f5 0%, #fce4ec 25%, #f8e8f0 50%, #e8d5e0 75%, #f3e5f5 100%);
+      background-attachment: fixed;
+      color: #5d3a4a;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ===== PRELOADER ===== */
+    .preloader {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #fff0f5, #fce4ec);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    .preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .preloader-heart {
+      font-size: 3rem;
+      animation: heartbeat 1s ease-in-out infinite;
+    }
+
+    .preloader p {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.3rem;
+      color: #c2185b;
+      margin-top: 1rem;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    /* ===== FLOATING HEARTS BACKGROUND ===== */
+    .floating-hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .floating-heart {
+      position: absolute;
+      color: rgba(220, 50, 80, 0.15);
+      animation: floatUp linear infinite;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(110vh) rotate(0deg) scale(0.5);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(360deg) scale(1);
+        opacity: 0;
+      }
+    }
+
+    /* ===== SPARKLE PARTICLES ===== */
+    .sparkle-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: radial-gradient(circle, rgba(255, 182, 193, 0.9), transparent);
+      border-radius: 50%;
+      animation: sparkleAnim linear infinite;
+    }
+
+    @keyframes sparkleAnim {
+      0% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(0); }
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    .content {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #f48fb1, #f06292);
+      color: white;
+      padding: 0.4rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 1.5rem;
+      animation: fadeInDown 1s 0.3s ease both;
+      box-shadow: 0 4px 20px rgba(244, 143, 177, 0.4);
+    }
+
+    .hero h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(2.2rem, 7vw, 4.5rem);
+      font-weight: 700;
+      color: #ad1457;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+      animation: fadeInUp 1s 0.5s ease both;
+      text-shadow: 0 2px 10px rgba(173, 20, 87, 0.15);
+    }
+
+    .hero h1 .heart-icon {
+      display: inline-block;
+      animation: heartbeat 1.2s ease-in-out infinite;
+      font-style: normal;
+    }
+
+    .hero-sub {
+      font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+      color: #8e5569;
+      font-style: italic;
+      max-width: 500px;
+      margin: 1rem auto 2rem;
+      line-height: 1.7;
+      animation: fadeInUp 1s 0.8s ease both;
+    }
+
+    /* Rotating Pet Names */
+    .rotating-text-wrapper {
+      height: 2.8rem;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0.5rem 0 1rem;
+      animation: fadeInUp 1s 1s ease both;
+    }
+
+    .rotating-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+      font-weight: 600;
+      color: #e91e63;
+      animation: rotateWords 9s ease-in-out infinite;
+      text-shadow: 0 2px 15px rgba(233, 30, 99, 0.2);
+    }
+
+    @keyframes rotateWords {
+      0%, 26% { opacity: 1; transform: translateY(0); }
+      30%, 33% { opacity: 0; transform: translateY(-30px); }
+      36%, 59% { opacity: 1; transform: translateY(0); }
+      63%, 66% { opacity: 0; transform: translateY(-30px); }
+      70%, 96% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-30px); }
+    }
+
+    .scroll-hint {
+      margin-top: 2rem;
+      animation: fadeInUp 1s 1.3s ease both, bounce 2s 2s ease-in-out infinite;
+      font-size: 1.5rem;
+      opacity: 0.6;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* ===== SECTION BASE ===== */
+    section {
+      padding: 4rem 1.5rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      color: #ad1457;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-bottom: 2.5rem;
+      color: #f48fb1;
+      font-size: 0.6rem;
+    }
+
+    .section-divider::before,
+    .section-divider::after {
+      content: '';
+      width: 50px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #f48fb1, transparent);
+    }
+
+    /* ===== LIFETIME TIMER ===== */
+    .timer-section {
+      text-align: center;
+    }
+
+    .timer-label {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(0.85rem, 2.5vw, 1rem);
+      color: #8e5569;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .timer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .timer-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(244, 143, 177, 0.2);
+      border-radius: 16px;
+      padding: 1.2rem 0.5rem;
+      box-shadow: 0 4px 20px rgba(244, 143, 177, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .timer-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(244, 143, 177, 0.2);
+    }
+
+    .timer-number {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(2rem, 6vw, 2.8rem);
+      font-weight: 700;
+      color: #c2185b;
+      line-height: 1;
+    }
+
+    .timer-unit {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #b06078;
+      margin-top: 0.4rem;
+    }
+
+    .timer-bottom-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    /* ===== LOVE LETTER ===== */
+    .love-letter-section {
+      text-align: center;
+    }
+
+    .letter-card {
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(244, 143, 177, 0.15);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 8px 40px rgba(244, 143, 177, 0.12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .letter-card::before {
+      content: '"';
+      position: absolute;
+      top: -10px;
+      left: 15px;
+      font-family: 'Dancing Script', cursive;
+      font-size: 6rem;
+      color: rgba(244, 143, 177, 0.15);
+      line-height: 1;
+    }
+
+    .letter-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(to right, #f48fb1, #e91e63, #f48fb1);
+      border-radius: 20px 20px 0 0;
+    }
+
+    .letter-text {
+      font-size: clamp(0.95rem, 2.5vw, 1.08rem);
+      line-height: 1.9;
+      color: #5d3a4a;
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+    }
+
+    .letter-text .highlight {
+      color: #c2185b;
+      font-weight: 500;
+    }
+
+    .letter-signature {
+      margin-top: 1.8rem;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.4rem;
+      color: #e91e63;
+    }
+
+    /* ===== WISH SECTION ===== */
+    .wish-section {
+      text-align: center;
+      padding-bottom: 5rem;
+    }
+
+    .wish-text {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2.8vw, 1.15rem);
+      color: #8e5569;
+      line-height: 1.8;
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+    }
+
+    /* ===== SURPRISE BUTTON ===== */
+    .surprise-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #ec407a, #e91e63, #c2185b);
+      color: white;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.3rem;
+      font-weight: 600;
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 6px 30px rgba(233, 30, 99, 0.35);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      animation: softGlow 2s ease-in-out infinite alternate;
+    }
+
+    .surprise-btn::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.15),
+        transparent
+      );
+      transform: rotate(45deg);
+      animation: shimmer 3s linear infinite;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) rotate(45deg); }
+    }
+
+    @keyframes softGlow {
+      0% { box-shadow: 0 6px 30px rgba(233, 30, 99, 0.35); }
+      100% { box-shadow: 0 6px 40px rgba(233, 30, 99, 0.55), 0 0 60px rgba(233, 30, 99, 0.15); }
+    }
+
+    .surprise-btn:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 10px 40px rgba(233, 30, 99, 0.5);
+    }
+
+    .surprise-btn:active {
+      transform: scale(0.97);
+    }
+
+    /* ===== POPUP MODAL ===== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(93, 58, 74, 0.5);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s ease;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      background: linear-gradient(135deg, #fff5f7, #fff0f5, #fce4ec);
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      transform: scale(0.8) translateY(20px);
+      transition: transform 0.4s ease;
+      box-shadow: 0 20px 60px rgba(173, 20, 87, 0.2);
+      border: 1px solid rgba(244, 143, 177, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .modal-overlay.active .modal {
+      transform: scale(1) translateY(0);
+    }
+
+    .modal-kiss {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      animation: heartbeat 1s ease-in-out infinite;
+    }
+
+    .modal h3 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.8rem;
+      color: #c2185b;
+      margin-bottom: 1rem;
+    }
+
+    .modal p {
+      font-style: italic;
+      color: #8e5569;
+      line-height: 1.7;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-close {
+      background: linear-gradient(135deg, #f48fb1, #e91e63);
+      color: white;
+      border: none;
+      padding: 0.6rem 2rem;
+      border-radius: 50px;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+    }
+
+    .modal-close:hover {
+      transform: scale(1.05);
+    }
+
+    /* ===== HEART BURST ===== */
+    .heart-burst {
+      position: fixed;
+      pointer-events: none;
+      z-index: 6000;
+    }
+
+    .burst-heart {
+      position: absolute;
+      font-size: 1.2rem;
+      animation: burstOut 1.2s ease-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes burstOut {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(0.5);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty)) scale(1.2) rotate(var(--rot));
+      }
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(25px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      15% { transform: scale(1.15); }
+      30% { transform: scale(1); }
+      45% { transform: scale(1.1); }
+      60% { transform: scale(1); }
+    }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem 3rem;
+      font-size: 0.8rem;
+      color: #b06078;
+      font-style: italic;
+    }
+
+    footer .footer-heart {
+      color: #e91e63;
+      display: inline-block;
+      animation: heartbeat 1.5s ease-in-out infinite;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (min-width: 480px) {
+      .timer-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.2rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      section {
+        padding: 5rem 2rem;
+      }
+
+      .hero {
+        padding: 3rem 2rem;
+      }
+
+      .letter-card {
+        padding: 3rem 2.5rem;
+      }
+    }
+
+    /* ===== MUSIC NOTE (decorative) ===== */
+    .deco-note {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(135deg, #f48fb1, #e91e63);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 20px rgba(233, 30, 99, 0.3);
+      z-index: 100;
+      animation: softGlow 2s ease-in-out infinite alternate;
+      cursor: default;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== PRELOADER ===== -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-heart">💖</div>
+    <p>Loading love...</p>
+  </div>
+
+  <!-- ===== FLOATING HEARTS BACKGROUND ===== -->
+  <div class="floating-hearts" id="floatingHearts"></div>
+
+  <!-- ===== SPARKLE PARTICLES ===== -->
+  <div class="sparkle-container" id="sparkles"></div>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <div class="content">
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero">
+      <div class="hero-badge">February 23, 2008</div>
+
+      <h1>
+        Happy 18th Birthday,<br>
+        My Shuttumani <i class="heart-icon">❤️</i>
+      </h1>
+
+      <p class="hero-sub">
+        For 18 beautiful years, my sweetheart has been lighting up the world with her smile, her warmth, and her magic.
+      </p>
+
+      <div class="rotating-text-wrapper">
+        <span class="rotating-text" id="rotatingText">my shuttumani</span>
+      </div>
+
+      <div class="scroll-hint">↓</div>
+    </section>
+
+    <!-- ===== LIFETIME TIMER ===== -->
+    <section class="timer-section reveal">
+      <h2 class="section-title">A Lifetime of Beauty</h2>
+      <div class="section-divider">♥</div>
+
+      <p class="timer-label">
+        Time My Shuttumani Has Been<br>Making This World Beautiful
+      </p>
+
+      <div class="timer-grid">
+        <div class="timer-card">
+          <div class="timer-number" id="timerYears">00</div>
+          <div class="timer-unit">Years</div>
+        </div>
+        <div class="timer-card">
+          <div class="timer-number" id="timerMonths">00</div>
+          <div class="timer-unit">Months</div>
+        </div>
+        <div class="timer-card">
+          <div class="timer-number" id="timerDays">00</div>
+          <div class="timer-unit">Days</div>
+        </div>
+      </div>
+
+      <div class="timer-bottom-row">
+        <div class="timer-card">
+          <div class="timer-number" id="timerHours">00</div>
+          <div class="timer-unit">Hours</div>
+        </div>
+        <div class="timer-card">
+          <div class="timer-number" id="timerMinutes">00</div>
+          <div class="timer-unit">Minutes</div>
+        </div>
+        <div class="timer-card">
+          <div class="timer-number" id="timerSeconds">00</div>
+          <div class="timer-unit">Seconds</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LOVE LETTER ===== -->
+    <section class="love-letter-section reveal">
+      <h2 class="section-title">A Letter for You</h2>
+      <div class="section-divider">♥</div>
+
+      <div class="letter-card">
+        <p class="letter-text">
+          Dear <span class="highlight">Sreelaksmi</span>,<br><br>
+          Eighteen years ago, the universe decided to create something truly extraordinary — and that was you. Every single day since then, you've been painting this world in the softest, most beautiful colors just by being yourself.
+          <br><br>
+          Your laughter is my favorite sound. Your smile is my favorite sight. Your heart is my favorite home. I am so incredibly proud of the <span class="highlight">beautiful soul</span> you've become — kind, strong, radiant, and endlessly loving.
+          <br><br>
+          Today, as you step into eighteen, I want you to know that you are <span class="highlight">loved beyond words</span>, cherished beyond measure, and celebrated today and every single day. Here's to a lifetime of your magic, your warmth, and your irreplaceable presence in this world.
+          <br><br>
+          Happy birthday, my forever girl. 🤍
+        </p>
+        <div class="letter-signature">
+          — With all my love, forever yours 💕
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FINAL SURPRISE ===== -->
+    <section class="wish-section reveal">
+      <h2 class="section-title">One Last Thing...</h2>
+      <div class="section-divider">♥</div>
+
+      <p class="wish-text">
+        Because every birthday deserves a little extra sweetness...
+        this one's just for you, Shuttumani.
+      </p>
+
+      <button class="surprise-btn" id="surpriseBtn" onclick="showSurprise(event)">
+        Tap for a Kiss 💋
+      </button>
+    </section>
+  </div>
+
+  <!-- ===== POPUP MODAL ===== -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-kiss">💋</div>
+      <h3>Muah! 💖</h3>
+      <p>
+        Consider that a tiny little kiss from me to you, my Shuttumani. You deserve all the love in this world and more. I'll always be here, cheering for you, adoring you, and loving you — today, tomorrow, and every day after.
+        <br><br>
+        Happy 18th, my sweetheart. You're magical. ✨
+      </p>
+      <button class="modal-close" onclick="closeModal()">I Love You Too 💕</button>
+    </div>
+  </div>
+
+  <!-- ===== DECORATIVE CORNER NOTE ===== -->
+  <div class="deco-note">💖</div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    Made with <span class="footer-heart">❤️</span> for Sreelaksmi<br>
+    Happy 18th Birthday, My Love
+  </footer>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    // ===== PRELOADER =====
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('preloader').classList.add('hidden');
+      }, 1500);
+    });
+
+    // ===== FLOATING HEARTS =====
+    function createFloatingHearts() {
+      const container = document.getElementById('floatingHearts');
+      const hearts = ['♥', '♡', '❤', '💕', '❥'];
+      const count = window.innerWidth < 600 ? 12 : 20;
+
+      for (let i = 0; i < count; i++) {
+        const heart = document.createElement('span');
+        heart.className = 'floating-heart';
+        heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.fontSize = (Math.random() * 14 + 8) + 'px';
+        heart.style.animationDuration = (Math.random() * 15 + 12) + 's';
+        heart.style.animationDelay = (Math.random() * 15) + 's';
+        container.appendChild(heart);
+      }
+    }
+    createFloatingHearts();
+
+    // ===== SPARKLE PARTICLES =====
+    function createSparkles() {
+      const container = document.getElementById('sparkles');
+      const count = window.innerWidth < 600 ? 20 : 35;
+
+      for (let i = 0; i < count; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.top = Math.random() * 100 + '%';
+        sparkle.style.width = (Math.random() * 4 + 2) + 'px';
+        sparkle.style.height = sparkle.style.width;
+        sparkle.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        sparkle.style.animationDelay = (Math.random() * 5) + 's';
+        container.appendChild(sparkle);
+      }
+    }
+    createSparkles();
+
+    // ===== LIFETIME TIMER =====
+    const birthDate = new Date(2008, 1, 23, 0, 0, 0); // Feb 23, 2008
+
+    function updateTimer() {
+      const now = new Date();
+
+      // Calculate years, months, days difference
+      let years = now.getFullYear() - birthDate.getFullYear();
+      let months = now.getMonth() - birthDate.getMonth();
+      let days = now.getDate() - birthDate.getDate();
+      let hours = now.getHours() - birthDate.getHours();
+      let minutes = now.getMinutes() - birthDate.getMinutes();
+      let seconds = now.getSeconds() - birthDate.getSeconds();
+
+      if (seconds < 0) { seconds += 60; minutes--; }
+      if (minutes < 0) { minutes += 60; hours--; }
+      if (hours < 0) { hours += 24; days--; }
+      if (days < 0) {
+        // Get last month's total days
+        const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+        days += prevMonth.getDate();
+        months--;
+      }
+      if (months < 0) { months += 12; years--; }
+
+      document.getElementById('timerYears').textContent = String(years).padStart(2, '0');
+      document.getElementById('timerMonths').textContent = String(months).padStart(2, '0');
+      document.getElementById('timerDays').textContent = String(days).padStart(2, '0');
+      document.getElementById('timerHours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('timerMinutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('timerSeconds').textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateTimer();
+    setInterval(updateTimer, 1000);
+
+    // ===== ROTATING PET NAMES =====
+    const petNames = ['my shuttumani', 'my sweetheart', 'my forever girl'];
+    let nameIndex = 0;
+    const rotatingEl = document.getElementById('rotatingText');
+
+    setInterval(() => {
+      nameIndex = (nameIndex + 1) % petNames.length;
+      rotatingEl.style.opacity = '0';
+      rotatingEl.style.transform = 'translateY(-20px)';
+
+      setTimeout(() => {
+        rotatingEl.textContent = petNames[nameIndex];
+        rotatingEl.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        rotatingEl.style.opacity = '1';
+        rotatingEl.style.transform = 'translateY(0)';
+      }, 500);
+    }, 3000);
+
+    // ===== SCROLL REVEAL =====
+    const revealEls = document.querySelectorAll('.reveal');
+
+    function checkReveal() {
+      const triggerPoint = window.innerHeight * 0.85;
+      revealEls.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < triggerPoint) {
+          el.classList.add('visible');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', checkReveal);
+    checkReveal();
+
+    // ===== SURPRISE BUTTON =====
+    function showSurprise(e) {
+      // Show modal
+      document.getElementById('modalOverlay').classList.add('active');
+
+      // Heart burst
+      createHeartBurst(e.clientX, e.clientY);
+    }
+
+    function closeModal(e) {
+      if (e && e.target !== e.currentTarget && e.target !== document.querySelector('.modal-close')) return;
+      document.getElementById('modalOverlay').classList.remove('active');
+    }
+
+    // ===== HEART BURST ANIMATION =====
+    function createHeartBurst(x, y) {
+      const burstContainer = document.createElement('div');
+      burstContainer.className = 'heart-burst';
+      burstContainer.style.left = x + 'px';
+      burstContainer.style.top = y + 'px';
+      document.body.appendChild(burstContainer);
+
+      const heartEmojis = ['❤️', '💕', '💖', '💗', '💘', '💝', '💋', '🤍', '✨', '🌸'];
+
+      for (let i = 0; i < 18; i++) {
+        const heart = document.createElement('span');
+        heart.className = 'burst-heart';
+        heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+
+        const angle = (Math.PI * 2 * i) / 18;
+        const distance = Math.random() * 120 + 60;
+        const tx = Math.cos(angle) * distance;
+        const ty = Math.sin(angle) * distance;
+        const rot = (Math.random() - 0.5) * 720;
+
+        heart.style.setProperty('--tx', tx + 'px');
+        heart.style.setProperty('--ty', ty + 'px');
+        heart.style.setProperty('--rot', rot + 'deg');
+        heart.style.fontSize = (Math.random() * 12 + 10) + 'px';
+
+        burstContainer.appendChild(heart);
+      }
+
+      setTimeout(() => burstContainer.remove(), 1500);
+    }
+
+    // ===== CLOSE MODAL ON ESCAPE =====
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+
+</body>
+</html>
